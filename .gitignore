@@ -1,0 +1,5 @@
+**/.idea/
+**/*.iml
+**/.logs/
+docker/**/*.jar
+/lib/
