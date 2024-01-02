@@ -1,0 +1,22 @@
+spring:
+  profiles:
+    active: @activeProfile@
+  jpa:
+    open-in-view: false
+  liquibase:
+    contexts: ${spring.profiles.active}
+  datasource:
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 15
+
+logging:
+  level:
+    root: INFO
+  file:
+    path: .logs/telegram_bot
+    name: ${logging.file.path}/log.log
+  pattern:
+    file: "%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n"
+    console: "%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n"
+
