@@ -1,6 +1,5 @@
 package com.petproject.telegram_bot.service.handler;
 
-import com.petproject.telegram_bot.constant.Command;
 import com.petproject.telegram_bot.model.message.MessageData;
 import com.petproject.telegram_bot.service.handler.strategy.HandlerFactory;
 import com.petproject.telegram_bot.service.handler.strategy.MessageType;
@@ -16,27 +15,14 @@ public class BotMessageHandlerImpl implements BotMessageHandler {
     private final HandlerFactory handlerFactory;
     @Override
     public MessageData handleMessage(Update update) {
-       String type = null;
-       if(update.getMessage() != null && this.isCommand(update.getMessage().getText().substring(1).split(" ")[0])) {
-          type = MessageType.COMMAND;
-       } else if(update.getMessage() != null) {
+       String type;
+
+       if(update.hasMessage()) {
           type = MessageType.TEXT;
-       } else if(update.getCallbackQuery() != null) {
+       } else if(update.hasCallbackQuery()) {
           type = MessageType.CALLBACK;
        } else throw new RuntimeException("Unsupported message type");
 
        return this.handlerFactory.getHandlerStrategy(type).processMessage(update);
-    }
-
-    private boolean isCommand(String message) {
-       Command command = null;
-
-       try {
-            command = Command.valueOf(message.toUpperCase());
-       }catch (IllegalArgumentException e) {
-           log.error("" , e);
-       }
-
-       return command != null;
     }
 }
