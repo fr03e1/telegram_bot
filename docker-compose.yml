@@ -1,0 +1,40 @@
+version: '3.9'
+
+services:
+  pet:
+    build: .
+    container_name: pet-service
+    ports:
+      - "127.0.0.1:9090:8080"
+    networks:
+      - main
+    environment:
+      TZ: Europe/Moscow
+    depends_on:
+      - pet-db
+    volumes:
+      - /srv/pet/logs:/app/.logs
+      - /srv/pet/resources:/srv/pet/resources
+    deploy:
+      resources:
+        limits:
+          memory: 2048M
+        reservations:
+          memory: 1024M
+    restart: always
+  pet-db:
+    image: postgres:12.16-bullseye
+    container_name: pet-database
+    environment:
+      POSTGRES_DB: pet
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      TZ: Europe/Moscow
+    volumes:
+      - /srv/pet/database:/var/lib/postgresql/data
+    networks:
+      - main
+
+networks:
+  main:
+    name: pet
