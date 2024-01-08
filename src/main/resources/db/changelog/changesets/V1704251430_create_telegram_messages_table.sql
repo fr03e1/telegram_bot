@@ -11,8 +11,8 @@ CREATE TABLE telegram_messages
 
 INSERT INTO telegram_messages(key, message)
 VALUES
-    ('default', 'Я вас не понимаю, восопльзуйтесь командой /start.'),
+    ('default', 'Я вас не понимаю, воспользуйтесь командой /start.'),
     ('start', 'Для продолжения выберите необходимое действие из предложенных ниже вариантов.'),
-    ('category', 'Выберите категрию.')
+    ('category', 'Выберите категорию.')
 ;
 

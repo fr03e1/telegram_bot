@@ -51,4 +51,16 @@ public class BotInlineButtonCreatorImpl implements BotButtonCreator {
         inlineKeyboardMarkup.getKeyboard().add(new ArrayList<>(List.of(this.createInlineKeyboardButton(text, botCallbackData))));
         return inlineKeyboardMarkup;
     }
+
+    @Override
+    public InlineKeyboardMarkup createInlineKeyboardMarkup(List<InlineKeyboardButton> inlineKeyboardButtonList) {
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+
+        List<List<InlineKeyboardButton>> rowList = new ArrayList<>();
+
+        inlineKeyboardButtonList.forEach(inlineKeyboardButton -> rowList.add(List.of(inlineKeyboardButton)));
+
+        inlineKeyboardMarkup.setKeyboard(rowList);
+        return inlineKeyboardMarkup;
+    }
 }

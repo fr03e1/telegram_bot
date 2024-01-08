@@ -6,7 +6,14 @@ import lombok.Getter;
 public enum BotCallbackData {
     DEFAULT("default"),
     START("start"),
-    CATEGORY("category");
+    CATEGORY("category"),
+
+    PRODUCTS("products"),
+    TRANSPORT("transport"),
+    HOUSE_SERVICE("house_service"),
+    EAT_OUTSIDE("eat_outside"),
+    CLOTHES("clothes"),
+    OTHERS("others");
 
     private final String data;
 

@@ -21,4 +21,6 @@ public class Category {
     private LocalDateTime createdAt;
     @Column
     private String value;
+    @Column
+    private String key;
 }

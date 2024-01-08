@@ -1,13 +1,16 @@
 package com.petproject.telegram_bot.service.creator.script;
 
 import com.petproject.telegram_bot.model.BotCallbackData;
+import com.petproject.telegram_bot.model.Category;
 import com.petproject.telegram_bot.repository.CategoryRepository;
 import com.petproject.telegram_bot.service.creator.button.BotButtonCreator;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -35,15 +38,20 @@ public class ScriptCreatorImpl implements ScriptCreator {
                 )
         );
 
-        this.categoryRepository.findAll().forEach(item -> {
-            this.scriptMap.put(
-                    BotCallbackData.CATEGORY.toString(),
-                    this.botInlineButtonCreator.createInlineKeyboardMarkup(
-                            this.botInlineButtonCreator.createInlineKeyboardButton(item.getValue(), BotCallbackData.CATEGORY)
-                    )
-            );
-        });
+        this.scriptMap.put(
+                BotCallbackData.CATEGORY.toString(),
+                this.botInlineButtonCreator.createInlineKeyboardMarkup(
+                        this.getCategoriesButtons()
+                )
+        );
 
         return scriptMap;
+    }
+
+    private List<InlineKeyboardButton> getCategoriesButtons() {
+        return this.categoryRepository.findAll()
+                .stream()
+                .map(item -> this.botInlineButtonCreator.createInlineKeyboardButton(item.getValue(), BotCallbackData.valueOf(item.getKey().toUpperCase())))
+                .toList();
     }
 }
