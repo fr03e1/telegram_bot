@@ -12,8 +12,7 @@ RUN --mount=type=cache,target=/root/.m2 \
 
 COPY . .
 
-RUN --mount=type=cache,target=/app/node_modules \
-    --mount=type=cache,target=/root/.m2 \
+RUN --mount=type=cache,target=/root/.m2 \
     mvn clean package -P ${ENVIRONMENT}
 
 # RUNNER

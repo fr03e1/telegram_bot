@@ -29,6 +29,12 @@ public class ScriptCreatorImpl implements ScriptCreator {
                 )
         );
 
+        this.scriptMap.put(BotCallbackData.TEST.toString(),
+                this.botInlineButtonCreator.createInlineKeyboardMarkup(
+                        this.botInlineButtonCreator.createInlineKeyboardButton("Стартуем", BotCallbackData.TEST)
+                )
+        );
+
         return scriptMap;
     }
 }

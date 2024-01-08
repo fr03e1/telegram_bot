@@ -37,7 +37,7 @@ public class Bot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
-        MessageData messageData = this.botMessageHandler.handleMessage(update);
+        final MessageData messageData = this.botMessageHandler.handleMessage(update);
 
         if(messageData instanceof TextMessage textMessage) {
             try {

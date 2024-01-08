@@ -26,11 +26,11 @@ public class TextMessageHandlerStrategy implements HandlerStrategy {
         if (update.getMessage().getText().substring(1).split(" ")[0].equals("start")) {
             message = this.createTextMessage(
                     chatId,
-                    "Hello world",
+                    "Бот предназначен",
                     this.scriptCreator.getScriptMap().get(BotCallbackData.TEST.getData())
             );
         } else {
-            message = this.createTextMessage(chatId, "default", null);
+            message = this.createTextMessage(chatId, "Я вас не понимаю, начните с команды /start.", null);
         }
 
         return message;
