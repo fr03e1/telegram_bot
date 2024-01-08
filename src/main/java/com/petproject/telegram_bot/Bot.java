@@ -3,7 +3,7 @@ package com.petproject.telegram_bot;
 import com.petproject.telegram_bot.model.message.CategoryTextMessage;
 import com.petproject.telegram_bot.model.message.MessageData;
 import com.petproject.telegram_bot.model.message.TextMessage;
-import com.petproject.telegram_bot.service.exponse.ExpenseService;
+import com.petproject.telegram_bot.service.expense.ExpenseService;
 import com.petproject.telegram_bot.service.handler.BotMessageHandler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -28,7 +28,7 @@ public class CallbackHandlerStrategy implements HandlerStrategy{
         if(this.isCategory(botCallbackData.getData())) {
             return new CategoryTextMessage(
                     String.valueOf(update.getCallbackQuery().getMessage().getChatId()),
-                    "Введите сумму",
+                    this.telegramMessageRepository.findByKey(BotCallbackData.EXPENSE.getData()).getMessage(),
                     botCallbackData.getData(),
                     update.getUpdateId()
             );

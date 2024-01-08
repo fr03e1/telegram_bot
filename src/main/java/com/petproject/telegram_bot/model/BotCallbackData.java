@@ -7,6 +7,7 @@ public enum BotCallbackData {
     DEFAULT("default"),
     START("start"),
     CATEGORY("category"),
+    EXPENSE("expense"),
 
     PRODUCTS("products"),
     TRANSPORT("transport"),

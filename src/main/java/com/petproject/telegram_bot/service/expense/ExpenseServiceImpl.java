@@ -1,6 +1,5 @@
-package com.petproject.telegram_bot.service.exponse;
+package com.petproject.telegram_bot.service.expense;
 
-import com.petproject.telegram_bot.model.Category;
 import com.petproject.telegram_bot.model.Expense;
 import com.petproject.telegram_bot.repository.CategoryRepository;
 import com.petproject.telegram_bot.repository.ExpenseRepository;
