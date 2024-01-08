@@ -2,6 +2,7 @@ package com.petproject.telegram_bot.service.handler.strategy;
 
 import com.petproject.telegram_bot.model.BotCallbackData;
 import com.petproject.telegram_bot.model.Category;
+import com.petproject.telegram_bot.model.message.CategoryTextMessage;
 import com.petproject.telegram_bot.model.message.MessageData;
 import com.petproject.telegram_bot.model.message.TextMessage;
 import com.petproject.telegram_bot.repository.CategoryRepository;
@@ -25,10 +26,11 @@ public class CallbackHandlerStrategy implements HandlerStrategy{
         final BotCallbackData botCallbackData = BotCallbackData.valueOf(update.getCallbackQuery().getData().toUpperCase());
 
         if(this.isCategory(botCallbackData.getData())) {
-            return new TextMessage(
+            return new CategoryTextMessage(
                     String.valueOf(update.getCallbackQuery().getMessage().getChatId()),
-                    update.getMessage().getText(),
-                    this.scriptCreator.getScriptMap().get(BotCallbackData.CATEGORY.toString())
+                    "Введите сумму",
+                    botCallbackData.getData(),
+                    update.getUpdateId()
             );
         }
 

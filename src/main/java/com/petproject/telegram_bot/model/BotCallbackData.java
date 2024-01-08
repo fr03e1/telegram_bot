@@ -20,5 +20,4 @@ public enum BotCallbackData {
     BotCallbackData(String data) {
         this.data = data;
     }
-
 }

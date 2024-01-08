@@ -18,8 +18,6 @@ public class Category {
     @Column
     private String comment;
     @Column
-    private LocalDateTime createdAt;
-    @Column
     private String value;
     @Column
     private String key;
