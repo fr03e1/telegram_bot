@@ -5,7 +5,8 @@ import lombok.Getter;
 @Getter
 public enum BotCallbackData {
     DEFAULT("default"),
-    TEST("test");
+    START("start"),
+    CATEGORY("category");
 
     private final String data;
 
