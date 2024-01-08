@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service(MessageType.CALLBACK)
 @RequiredArgsConstructor

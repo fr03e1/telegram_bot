@@ -1,7 +1,6 @@
 package com.petproject.telegram_bot.service.creator.script;
 
 import com.petproject.telegram_bot.model.BotCallbackData;
-import com.petproject.telegram_bot.model.Category;
 import com.petproject.telegram_bot.repository.CategoryRepository;
 import com.petproject.telegram_bot.service.creator.button.BotButtonCreator;
 import lombok.Getter;
