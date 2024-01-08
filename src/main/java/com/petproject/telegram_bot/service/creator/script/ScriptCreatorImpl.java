@@ -39,9 +39,7 @@ public class ScriptCreatorImpl implements ScriptCreator {
 
         this.scriptMap.put(
                 BotCallbackData.CATEGORY.toString(),
-                this.botInlineButtonCreator.createInlineKeyboardMarkup(
-                        this.getCategoriesButtons()
-                )
+                this.botInlineButtonCreator.createInlineKeyboardMarkup(this.getCategoriesButtons())
         );
 
         return scriptMap;
@@ -50,7 +48,10 @@ public class ScriptCreatorImpl implements ScriptCreator {
     private List<InlineKeyboardButton> getCategoriesButtons() {
         return this.categoryRepository.findAll()
                 .stream()
-                .map(item -> this.botInlineButtonCreator.createInlineKeyboardButton(item.getValue(), BotCallbackData.valueOf(item.getKey().toUpperCase())))
+                .map(item -> this.botInlineButtonCreator.createInlineKeyboardButton(
+                        item.getValue(),
+                        BotCallbackData.valueOf(item.getKey().toUpperCase())
+                ))
                 .toList();
     }
 }
