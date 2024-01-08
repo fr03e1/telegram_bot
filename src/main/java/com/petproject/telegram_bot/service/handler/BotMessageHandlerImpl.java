@@ -27,7 +27,7 @@ public class BotMessageHandlerImpl implements BotMessageHandler {
           this.getOrCreateUser(update.getMessage().getChatId(), update.getMessage().getFrom().getUserName());
        } else if(update.hasCallbackQuery()) {
           type = MessageType.CALLBACK;
-          this.getOrCreateUser(update.getMessage().getChatId(), update.getCallbackQuery().getFrom().getUserName());
+          this.getOrCreateUser(update.getCallbackQuery().getMessage().getChatId(), update.getCallbackQuery().getFrom().getUserName());
        } else throw new RuntimeException("Unsupported message type");
 
        return this.handlerFactory.getHandlerStrategy(type).processMessage(update);

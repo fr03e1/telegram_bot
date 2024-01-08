@@ -27,7 +27,7 @@ public class TextMessageHandlerStrategy implements HandlerStrategy {
             message = this.createTextMessage(
                     chatId,
                     "Бот предназначен",
-                    this.scriptCreator.getScriptMap().get(BotCallbackData.TEST.getData())
+                    this.scriptCreator.getScriptMap().get(BotCallbackData.TEST.toString())
             );
         } else {
             message = this.createTextMessage(chatId, "Я вас не понимаю, начните с команды /start.", null);
